@@ -1,0 +1,9 @@
+django>=5.0,<5.1
+django-utils-six==2.0
+pre-commit
+pip-tools
+django-htmx
+python-dotenv==1.0.1
+django-autoslug
+whitenoise
+django-allauth[socialaccount]

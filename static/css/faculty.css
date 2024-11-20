@@ -1,0 +1,76 @@
+.fav-faculties {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.faculty-card {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    background-color: var(--cards-bg);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 4px;
+    padding: 1rem 0;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.faculty-detail-header {
+    text-align: center;
+}
+
+.faculty-detail-options,
+.review-card-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.review-card {
+    background-color: var(--cards-bg);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 4px 4px;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.review-title {
+    font-weight: bold;
+}
+
+.review-card-title {
+    margin-bottom: 1rem;
+}
+
+.review-card-promo,
+.review-card-pro,
+.review-card-con,
+.review-card-advice {
+    display: flex;
+    margin-bottom: 1rem;
+}
+
+.faculty-detail-txt {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: var(--light-gray);
+}
+
+.sort-faculties {
+    font-family: 'Nunito', sans-serif;
+    padding: .1rem .5rem;
+    border: 1.5px solid var(--primary-color);
+    border-radius: 10px;
+    color: var(--text-gray);
+    background-color: transparent;
+}
+
+
+@media screen and (min-width:992px) {
+    .faculty-cards {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 16px;
+        margin-top: 2rem;
+        padding: 0 .5rem;
+    }
+}

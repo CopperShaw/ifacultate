@@ -1,0 +1,43 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-btns">
+        <div id="btn-login" _="on click if I do not match .active add .active else remove .active end
+                                then if #btn-signup matches .active remove .active from #btn-signup end" class="btn-auth btn-login" hx-get="{% url 'login' %}" hx-target="#target">Login</div>
+        <div id="btn-signup" _="on click if I do not match .active add .active else remove .active end
+                                then if #btn-login matches .active remove .active from #btn-login end" class="btn-auth btn-signup" hx-get="{% url 'register' %}" hx-target="#target">Signup</div>
+    </div>
+    <div id="target">
+        <div class="auth-form login-form">
+            <form method="POST" autocomplete="off" hx-post="{% url 'login' %}" hx-target="#target">
+                {% csrf_token %}
+
+                {{login_form}}
+                <a id="forgot-pw-btn" href="{% url 'reset_password' %}">Am uitat parola</a>
+                <div class="auth-form-submit"><input class="auth-btn" type="submit" value="Autentificare"></div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('htmx:afterSwap', function (event) {
+        const data = JSON.parse(event.detail.xhr.responseText);
+        if (data.logged_in) {
+            window.location.href = "{% url 'home' %}";
+        }
+        if (data.signed_in) {
+            window.location.href = "{% url 'email-verification-sent' %}";
+        }
+    });
+</script>
+
+{% endblock content %}

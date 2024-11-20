@@ -1,0 +1,37 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/faq.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+<div class="container-faq">
+    <div class="header-faq">
+        <img class="faq-img" src="{% static 'images/announcement.png' %}" alt="intrebari frecvente">
+        <a href="{% url 'contact' %}" id="faq-contact-btn">Contactează-ne</a>
+    </div>
+    <div class="questions-faq">
+        <div class="question" _="on click toggle .active on #a1">
+            <div class="q">Câte recenzii pot să scriu la o facultate? </div>
+            <div id="a1" class="a">Poți scrie o singură recenzie pentru o facultate. Nu poți adăuga două sau mai multe recenzii pentru aceeași facultate.</div>
+        </div>
+        <div class="question" _="on click toggle .active on #a2">
+            <div class="q">În cât timp va fi vizibilă recenzia pe site?</div>
+            <div id="a2" class="a">După ce ai trimis recenzia, aceasta va trebui acceptată pentru a putea fi vizibilă pe site. Ne străduim să fim cât de eficienți posibil astfel încât recenzia ta să fie aprobată rapid. Garantăm că în cel mult 24 de ore recenzia ta va fi publică.
+
+            </div>
+        </div>
+        <div class="question" _="on click toggle .active on #a3">
+            <div class="q">De ce nu a fost aprobată recenzia?</div>
+            <div id="a3" class="a">Nu vom aproba recenziile care au un caracter obscen, insultator, abuziv, denotă ură sau încurajează un comportament amenințător. Vrem să asigurăm că recenziile sunt informative și cuprinzătoare, și chiar dacă ai avut o experiență neplăcută, vom respecta părerea ta în condițiile în care respectă limitele bunului simț. </div>
+        </div>
+        <div class="question" _="on click toggle .active on #a4">
+            <div class="q">Cum se calculează nota unei facultăți?</div>
+            <div id="a4" class="a">Fiecare recenzie va avea o evaluare generală notată de la 1-5. Nota unei facultăți se calculează făcând media artimetică a tuturor recenziilor din cadrul facultății. </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iFacultate.ro</title>
+    <script src="{% static 'js/htmx.min.js' %}"></script>
+    <script src="{% static 'js/hyperscript.min.js' %}"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reset.css' %}">
+    <link rel="stylesheet" href="{% static 'css/general.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    {% block styles %}
+    {% endblock styles %}
+    <script>
+        let FF_FOUC_FIX;
+    </script>
+</head>
+
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+    <div class="container">
+        <header class="header">
+
+            <nav class="navbar">
+                <div class="logo-container">
+                    <a id="logo" class="logo" href="{% url 'home' %}">iFacultate</a>
+                    <button _="on click add .active to .navbar-links then toggle .active on me then toggle .active on .hamburger-opened" class="hamburger hamburger-closed active">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                    </button>
+
+                    <button _="on click toggle .active on .navbar-links then toggle .active on me then toggle .active on .hamburger-closed" class="hamburger hamburger-opened">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="navbar-links">
+                    <div class="nav-links">
+                        <a href="{% url 'universitati' %}">Universități</a>
+                        <a href="{% url 'about' %}">Despre noi</a>
+                        <a href="{% url 'contact' %}">Contact</a>
+                        <a id="review-link-add" href="{% url 'add-review' %}">Adauga recenzie</a>
+                    </div>
+                    <div class="navbar-auth">
+                        {% if user.is_authenticated %}
+                        <a id="logout-link" href="{% url 'logout' %}">Logout</a>
+                        <a id="profile-link" href="{% url 'profile' pk=user.pk %}">Contul meu</a>
+                        {% else %}
+                        <a id="auth-link" href="{% url 'auth' %}">Autentificare</a>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </nav>
+        </header>
+
+
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+    <div class="container">
+        <footer class="footer">
+            <div class="footer-header">
+                <a id="footer-header-text" href="{% url 'home' %}">iFacultate</a>
+                <p>Facultatea ta, la un click distanță!</p>
+            </div>
+
+            <div class="footer-links">
+                <a class="footer-link" href="{% url 'faq' %}">Întrebări frecvente</a>
+                <a class="footer-link" href="{% url 'cookies' %}">Politica de cookies</a>
+                <a class="footer-link" href="{% url 'date' %}">Prelucrare date</a>
+                <a class="footer-link" href="{% url 't_and_c' %}">Termeni și condiții de utilizare</a>
+                <a class="footer-link" href="{% url 'about' %}">Despre iFacultate</a>
+                <a class="footer-link" href="{% url 'contact' %}">Contact</a>
+            </div>
+
+            <div class="footer-cr">
+                <p>&copy; 2024 www.ifacultate.ro</p>
+                <p>Toate drepturile rezervate</p>
+            </div>
+
+            <div class="footer-socials">
+                <p>Urmăriți-ne și pe:</p>
+                <div class="footer-social-links">
+                    <a class="socials-link" target="_blank" href="https://www.tiktok.com/@ifacultate?_t=8rMw5bhQtyo&_r=1" target="_blank">
+                        <img src="{% static 'images/tiktok.png' %}">
+                    </a>
+                    <a class="socials-link" href="https://www.instagram.com/ifacultate/" target="_blank">
+                        <img src="{% static 'images/instagram.png' %}">
+                    </a>
+                    <a class="socials-link" target="_blank" href="https://www.linkedin.com/company/105470875/" target="_blank">
+                        <img src="{% static 'images/linkedin.png' %}">
+                    </a>
+                    <a class="socials-link" href="https://www.facebook.com/profile.php?id=61568067703912" target="_blank">
+                        <img src="{% static 'images/facebook.png' %}">
+                    </a>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+</body>
+
+</html>

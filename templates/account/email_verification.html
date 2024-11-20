@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <style>
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+
+<body style="
+    display: block;
+    margin: 0 auto;
+    max-width: 600px;
+    ">
+    <a style="color: #0f4c81; font-size: 30px;" href="https://{{ domain }}">iFacultate</a>
+    <br>
+    <p style="font-size: 20px;">Bine ai venit!</p>
+    <p style="color: #6d6d6d;">Pentru a-ți confirma adresa de E-mail, te rugăm să dai click pe linkul de mai jos:</p>
+    <br>
+    <a href="https://{{ domain }}{% url 'email-verification' uidb64=uid token=token %}" style="padding: 0.5rem 1rem; border-radius: 10px; background-color: #fa9805; color: black; font-size: 18px; display: block; text-align: center; width: 250px; margin: 0 auto;">Verificare E-mail</a>
+    <br>
+    <p style="font-size: 14px; color: #6d6d6d;text-align: center;">Linkul este valabil 24 de ore.</p>
+    <br>
+    <hr style="color: #6d6d6d;">
+    <p style="font-size: 14px; color: #6d6d6d;">iFacultate îți oferă informații și recenzii de la studenți și absolvenți din întreaga țară.</p>
+    <p style="font-size: 14px; color: #6d6d6d;">Odată ce ai confirmat adresa de E-mail, vei putea începe să explorezi facultățile din România!</p>
+    <hr style="color: #6d6d6d;">
+    <br><br>
+    <a style="color: #0f4c81; font-size: 24px; display: block; text-align: center;" href="https://{{ domain }}">iFacultate</a>
+    <p style="text-align: center; color: #6d6d6d;">Facultatea ta, la un click distanță!</p>
+
+</body>
+
+</html>

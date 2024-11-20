@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+<link rel="stylesheet" href="{% static 'css/university.css' %}">
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+
+{% endblock styles %}
+
+{% block content %}
+<div class="faculty-detail-header">
+    <p class="blue-name">{{faculty.name}}</p>
+    <p class="faculty-detail-txt">{{faculty.university.name}}</p>
+    <p class="faculty-detail-txt">{% if faculty.reviews_number == 1 %} (o recenzie) {% else %} ({{faculty.reviews_number}} recenzii) {% endif %}</p>
+</div>
+
+<br>
+<br>
+
+<div class="faculty-detail-options">
+    <form hx-get="{% url 'get-reviews' faculty_id=faculty.pk %}" hx-target="#review-list" hx-trigger="change">
+        <select class="sort-faculties" name="sort" autocomplete="off">
+            <option value="default" selected>Ordonează</option>
+            <option value="sort-new">Noi</option>
+            <option value="sort-old">Vechi</option>
+
+        </select>
+    </form>
+    <div class="add-review-btn">
+        <a href="{% url 'add-review' slug_university=faculty.university.slug slug_faculty=faculty.slug %}">Adaugă o recenzie</a>
+    </div>
+</div>
+
+<div id="review-list" class="review-list">
+    {% include 'reviews/review_list.html' %}
+</div>
+{% endblock content %}

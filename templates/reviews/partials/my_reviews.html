@@ -1,0 +1,11 @@
+{% if fav %}
+<p class="fav-title">Recenzii favorite</p>
+{% else %}
+<p class="fav-title">Recenziile mele</p>
+{% endif %}
+
+{% for review in reviews %}
+
+{% include 'reviews/partials/review_card.html' %}
+
+{% endfor %}

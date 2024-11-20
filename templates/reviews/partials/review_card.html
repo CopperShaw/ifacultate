@@ -1,0 +1,57 @@
+{% load add_half %}
+
+<div class="review-card">
+    <div class="review-card-header">
+        <p class="review-user-type review-field text-bold">{{review.get_user_type_display}}</p>
+        <p class="review-date">{{review.formatted_date}}</p>
+    </div>
+
+    <div class="review-card-title">
+        <p class="review-field  text-bold">{{review.title}}</p>
+        <p class="review-uni-fac review-field text-center">{{review.university}} - {{review.faculty}}</p>
+    </div>
+
+    <div class="review-card-promo">
+        <p class="review-field"><span class="text-bold">Promoția:</span> {{review.grad_promo}}</p>
+    </div>
+
+    <div class="review-card-pro">
+        <p class="review-field"><span class="text-bold">Aspecte pozitive:</span> {{review.pro}}</p>
+    </div>
+
+    <div class="review-card-con">
+        <p class="review-field"> <span class="text-bold">Aspecte negative:</span> {{review.against}}</p>
+    </div>
+
+    <div class="review-card-advice">
+        <p class="review-field"><span class="text-bold">Sfaturi:</span> {{review.advice}}</p>
+    </div>
+
+    <div class="star-rating">
+        <p class="review-field">{{review.rating}}/5 &nbsp;</p>
+        {% for i in '01234'|make_list %}
+        {% if review.rating >= forloop.counter0|add_half and review.rating > 0 %}
+        <span class="star highlighted">★</span>
+        {% else %}
+        <span class="star">★</span>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    <br>
+
+    {% if review.user == user %}
+    <p class="review-field">{{review.get_status_display}}</p>
+    {% else %}
+    <div class="text-center" hx-post="{% url 'add-review-to-fav' review_id=review.pk %}">
+        {% if review in user.favorite_reviews.all %}
+        <p>❤️ Elimină de la favorite</p>
+        {% else %}
+        <p>♡ Adaugă la favorite</p>
+        {% endif %}
+    </div>
+
+    {% endif %}
+
+
+</div>

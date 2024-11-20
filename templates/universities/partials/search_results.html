@@ -1,0 +1,8 @@
+<div class="no-unis">
+    <p>Rezultate: {{universities.count}} universități</p>
+</div>
+<div id="university-list" class="university-list">
+    {% for university in universities %}
+    {% include 'universities/partials/university_card.html' %}
+    {% endfor %}
+</div>

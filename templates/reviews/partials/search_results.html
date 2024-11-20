@@ -1,0 +1,5 @@
+{% for faculty in faculties %}
+<p class="font-nunito"><a href="{% url 'faculty' slug_university=faculty.university.slug slug_faculty=faculty.slug %}">{{ faculty.name }}</a></p>
+<p class="font-nunito"><a href="{% url 'university' slug_university=faculty.university.slug %}">{{ faculty.university }}</a></p>
+<hr>
+{% endfor %}

@@ -1,0 +1,240 @@
+{% extends "_base.html" %}
+
+{% load static %}
+{% load add_half %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/homepage.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<section class="section-header">
+    <div class="search-header">
+        <h1 class="homepage-header">Facultatea ta <br> la un <span>click</span> <br> distanță</h1>
+
+        <form class="search-form">
+            {% csrf_token %}
+            <input class="form-control" type="search" name="search" placeholder="Caută facultate..." hx-get="{% url 'search-results' %}" hx-trigger="keyup changed, search" hx-target="#search-results">
+        </form>
+
+        <div id="search-results">
+            {% include "reviews/partials/search_results.html" %}
+        </div>
+    </div>
+    <div class="photo-header disappear-from-mobile">
+        <img src="{% static 'images/studying.png' %}" />
+    </div>
+</section>
+
+
+<br>
+<section class="section section-what">
+    <div class="section-insides ">
+        <p class="section-what-title">Ce găsești pe iFacultate?</p>
+        <br>
+        <div class="section-what-grid">
+            <div class="grid-item" _="on mouseenter add .active to me then add .visible to #hp-t1 then add .invisible to #hp-t11 end
+                                      on mouseleave remove .active from me then remove .visible from #hp-t1 then remove .invisible from #hp-t11  end">
+                <div class="grid-item-wrapper">
+                    <span id="hp-t1">peste {{no_reviews}} recenzii de la studenți pentru viitori studenți</span>
+                    <img src="{% static 'images/notebook.svg' %}">
+                    <p id="hp-t11">{{no_reviews}}+ Recenzii</p>
+                </div>
+            </div>
+            <div class="grid-item" _="on mouseenter add .active to me then add .visible to #hp-t2 then add .invisible to #hp-t21 end
+                                      on mouseleave remove .active from me then remove .visible from #hp-t2 then remove .invisible from #hp-t21  end">
+                <div class="grid-item-wrapper">
+                    <span id="hp-t2">toate universitățile din România la un click distanță</span>
+                    <img src="{% static 'images/school.svg' %}">
+                    <p id="hp-t21">100+ Universități</p>
+                </div>
+            </div>
+            <div class="grid-item" _="on mouseenter add .active to me then add .visible to #hp-t3 then add .invisible to #hp-t31 end
+                                      on mouseleave remove .active from me then remove .visible from #hp-t3 then remove .invisible from #hp-t31  end">
+                <div class="grid-item-wrapper">
+                    <span id="hp-t3">găsește facultatea potrivită pentru tine</span>
+                    <img src="{% static 'images/education.svg' %}">
+                    <p id="hp-t31">500+ Facultăți</p>
+                </div>
+            </div>
+            <div class="grid-item" _="on mouseenter add .active to me then add .visible to #hp-t4 then add .invisible to #hp-t41 end
+                                      on mouseleave remove .active from me then remove .visible from #hp-t4 then remove .invisible from #hp-t41  end">
+                <div class="grid-item-wrapper">
+                    <span id="hp-t4">păreri reale și anonime pentru o transparență completă</span>
+                    <img src="{% static 'images/check.svg' %}">
+                    <p id="hp-t41">Transparență</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<section class="section section-who">
+    <div class="section-insides insides-grid">
+        <div class="insides-grid-item">
+            <p class="section-who-title">Pentru cine?</p>
+            <div class="section-who-options">
+                <div id="op1" class="section-who-option" _="on click if I do not match .active add .active else remove .active end
+                                                        then if #op2 matches .active remove .active from #op2 then remove .active from #option-absolvent end
+                                                        then if #option-student does not match .active add .active to #option-student else remove .active from #option-student end">
+                    Viitori studenți
+                </div>
+                <div id="op2" class="section-who-option" _="on click if I do not match .active add .active else remove .active end
+                                                        then if #op1 matches .active remove .active from #op1 then remove .active from #option-student end
+                                                        then if #option-absolvent does not match .active add .active to #option-absolvent else remove .active from #option-absolvent end">
+                    Absolvenți
+                </div>
+            </div>
+            <div id="options">
+                <p id="option-student" class="option-student">
+                    Te pregătești să faci pasul cel mare și să alegi facultatea potrivită? Cu iFacultate, decizia devine mai ușoară! Aici găsești recenzii 100% anonime scrise de studenți sau absolvenți, astfel încât tu să poți lua decizia cea mai bună.
+
+                </p>
+                <p id="option-absolvent" class="option-absolvent">
+                    Ai absolvit deja o facultate, sau ești student și vrei să ajuți următoarea generație? Împărtășește-ți experiența 100% anonim și ajută viitorii studenți să își aleagă facultatea potrivită. Împreună, putem construi cea mai mare și utilă platformă de recenzii despre facultăți din România!
+
+                </p>
+            </div>
+        </div>
+        <div class="insides-grid-item">
+            <p class="subheading-who1">Cauți o facultate care să te ajute să îți atingi obiectivele? Atunci iFacultate este locul potrivit pentru tine! </p>
+        </div>
+        <div class="insides-grid-item">
+            <img src="{% static 'images/stairs.jpg' %}">
+        </div>
+        <div class="insides-grid-item">
+            <p class="subheading-who2">Dacă ești indecis și ai nevoie de ajutor, poți afla mai multe despre facultățile <br> din România, citind recenziile studenților și absolvenților.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section section-dk">
+    <div class="section-insides on-mobile">
+        <br> <br>
+        <p class="subheading-dk">Nu știi ce facultate este <span class="orange-text">potrivită</span> pentru tine?</p>
+        <div class="section-dk-relative">
+            <div class="section-dk-line"></div>
+            <div class="grid-container">
+                <div class="grid-item column-1">
+                    <p class="dk-text text-right">Caută facultatea</p>
+                </div>
+                <div class="grid-item column-2">
+                    <div class="circle"></div>
+                </div>
+                <div class="grid-item column-3"></div>
+                <div class="grid-item column-1"></div>
+                <div class="grid-item column-2">
+                    <div class="circle"></div>
+                </div>
+                <div class="grid-item column-3">
+                    <p class="dk-text text-left">Citește recenziile</p>
+                </div>
+                <div class="grid-item column-1">
+                    <p class="dk-text text-right">Analizează</p>
+                </div>
+                <div class="grid-item column-2">
+                    <div class="circle"></div>
+                </div>
+                <div class="grid-item column-3"></div>
+                <div class="grid-item column-1"></div>
+                <div class="grid-item column-2">
+                    <div class="circle"></div>
+                </div>
+                <div class="grid-item column-3">
+                    <p class="dk-text text-left">Ia o decizie</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-insides on-desktop">
+        <p class="subheading-dk">Nu știi ce facultate este <span class="orange-text">potrivită</span> pentru tine?</p> <br> <br> <br> <br>
+        <div class="timeline">
+            <div class="event">
+                <div class="circle"></div>
+                <p class="text below">Caută facultate</p>
+            </div>
+            <div class="event">
+                <div class="circle"></div>
+                <p class="text above">Citește recenziile</p>
+            </div>
+            <div class="event">
+                <div class="circle"></div>
+                <p class="text below">Analizează</p>
+            </div>
+            <div class="event">
+                <div class="circle"></div>
+                <p class="text above">Ia o decizie</p>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="section section-cta">
+    <div class="section-insides">
+        <div class="cta-img">
+            <img class="image-cta" src="{% static 'images/announcement.png' %}">
+        </div>
+
+        <div class="cta-txt">
+            <h2 class="heading-cta">PĂREREA TA CONTEAZĂ!</h2>
+            <p class="subheading-cta">Înscrie-te pe iFacultate și adaugă o <br class="on-desktop"> recenzie despre facultatea ta!</p>
+
+            <button class="button-cta">
+                <a href="{% url 'add-review' %}">Adaugă o recenzie</a>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="section section-latest">
+    <div class="section-insides">
+        {% include 'reviews/partials/recent_reviews.html' %}
+        <div class="on-desktop desktop-recent-reviews">
+            {% for review in recent_reviews %}
+            <div class="review">
+                <p class="review-title-recent text-center">{{ review.title|slice:":20" }}</p>
+                <p class="review-card-fac text-center">{{ review.faculty.name }}</p>
+                <p class="review-card-uni text-center">{{ review.university.name }}</p>
+                <div class="desc-field">
+                    <p class="review-desc">Sfaturi: </p>
+                    <p class="review-desc-field">{{ review.advice|slice:":60"|add:'...' }}
+                    </p>
+                </div>
+
+                <div class="desc-field">
+                    <p class="review-desc">Pro: </p>
+                    <p class="review-desc-field review-pro">{{review.pro|slice:":60"|add:'...'}}
+                </div>
+
+                <div class="desc-field">
+                    <p class="review-desc">Contra: </p>
+                    <p class="review-desc-field">{{review.against|slice:":60"|add:'...'}}
+                </div>
+
+                <div class="review-flex">
+                    <div class="star-rating">
+                        {% for i in '01234'|make_list %}
+                        {% if review.rating >= forloop.counter0|add_half and review.rating > 0 %}
+                        <span class="star highlighted">★</span>
+                        {% else %}
+                        <span class="star">★</span>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="review-flex">
+                    <div class="review-student">
+                        <p class="review-education text-center">{{ review.get_user_type_display }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

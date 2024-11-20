@@ -1,0 +1,26 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/university.css' %}">
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<p class="blue-name"> {{object.name}} </p><br>
+<br>
+
+<div class="uni-details">
+    <p>Fondată: {{object.founded}} </p>
+    <p>Facultăți incluse: {{faculties.count}}</p>
+    <a id="uni-url" href="{{object.url}}">{{object.url}}</a>
+</div>
+<div class="back-to-unis">
+    <a id="back-to-uni" href="{% url 'universitati' %}">Înapoi la universități</a>
+</div>
+
+
+{% include 'faculties/faculty_list.html' %}
+
+{% endblock content %}

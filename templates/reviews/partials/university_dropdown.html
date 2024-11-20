@@ -1,0 +1,13 @@
+<p class="shadow">
+    <select name="university" required id="id_university" hx-get="{% url 'faculties-dropdown' %}" hx-trigger="change" hx-target=".faculty-dropdown">
+        <option value="{{ field.value }}" selected>
+            {% if field.initial %} {{ field.initial }} {% else %} Alege universitatea {% endif %}
+        </option>
+
+        {% for university in universities %}
+        <option value="{{ university.pk }}">{{ university.name }}</option>
+        {% endfor %}
+        </options>
+
+    </select>
+</p>

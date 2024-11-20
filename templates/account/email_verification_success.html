@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="email-info-container">
+    <h1 class="email-info-header">Email-ul tau a fost verificat cu succes.</h1>
+    <a href="{% url 'auth' %}">Autentificare</a>
+</div>
+{% endblock content %}

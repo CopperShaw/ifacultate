@@ -1,0 +1,53 @@
+{% load static %}
+{% load add_half %}
+
+<div class="latest-wrapper">
+    <h1 class="heading-latest">Ultimele recenzii</h1>
+    <p class="swipe-tag">↔</p>
+</div>
+<div class="slider-wrapper on-mobile">
+    <div class="slider">
+        {% for review in recent_reviews %}
+        <div id="slide-{{forloop.counter}}" class="slide">
+            <div class="review">
+                <p class="review-title-recent text-center">{{ review.title|slice:":20" }}</p>
+                <p class="review-card-fac text-center">{{ review.faculty.name }}</p>
+                <p class="review-card-uni text-center">{{ review.university.name }}</p>
+                <div class="desc-field">
+                    <p class="review-desc">Sfaturi: </p>
+                    <p class="review-desc-field">{{ review.advice|slice:":60"|add:'...' }}
+                    </p>
+                </div>
+
+                <div class="desc-field">
+                    <p class="review-desc">Pro: </p>
+                    <p class="review-desc-field review-pro">{{review.pro|slice:":60"|add:'...'}}
+                </div>
+
+                <div class="desc-field">
+                    <p class="review-desc">Contra: </p>
+                    <p class="review-desc-field">{{review.against|slice:":60"|add:'...'}}
+                </div>
+
+                <div class="review-flex">
+                    <div class="star-rating">
+                        {% for i in '01234'|make_list %}
+                        {% if review.rating >= forloop.counter0|add_half and review.rating > 0 %}
+                        <span class="star highlighted">★</span>
+                        {% else %}
+                        <span class="star">★</span>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="review-flex">
+                    <div class="review-student">
+                        <p class="review-education text-center">{{ review.get_user_type_display }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>

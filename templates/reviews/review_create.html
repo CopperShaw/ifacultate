@@ -1,0 +1,85 @@
+{% extends '_base.html' %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+<div class="create-review">
+    <div class="review-create-header">
+        <br>
+        <h2 class="text-center review-create-head">ÎMPĂRTĂȘEȘTE-ȚI EXPERIENȚA</h2>
+        <br>
+        <img src="{% static 'images/thinker.svg' %}">
+        <br>
+        <br>
+        <p>
+            Vrem ca împărtășirea experienței tale cu iFacultate să fie cât mai ușoară și plăcută. În formularul de recenzie, te invităm să ne spui, clar și pe scurt, cum a fost pentru tine facultatea unde ai studiat sau unde studiezi acum.
+        </p>
+        <br>
+        <p>
+            Pentru că dorim ca recenziile să fie utile și complete, te încurajăm să ne împărtășești atât aspectele pozitive, cât și cele care ar putea fi îmbunătățite. Astfel, viitorii studenți vor putea lua cele mai bune decizii.
+        </p>
+        <br>
+        <p>
+            Stai liniștit, recenzia ta va fi tratată cu grijă și confidențialitate, iar datele tale personale nu vor fi făcute publice. Apreciem că ai acordat timp să îți împărtășești experiența și cu alți studenți.
+        </p>
+        <br>
+
+    </div>
+
+    <form method="post" class="review-create-form">
+        <p class="form-title text-center">Completează formularul și ajută un viitor student!</p>
+        {% csrf_token %}
+        {% for field in form %}
+        {% for error in field.errors %}
+        {{error}}
+        {% endfor %}
+
+        {% if field.name == 'university' %}
+        {% include 'reviews/partials/university_dropdown.html' %}
+        {% elif field.name == 'faculty' %}
+        <div class="faculty-dropdown">
+            {% include 'reviews/partials/faculty_dropdown.html' %}
+        </div>
+        {% else %}
+        {% if field.name == 'rating' %}
+        <div class="rating">
+            {% for i in "12345" %}
+            <i class="rating-star fa fa-star" data-rating="{{ i }}"></i>
+            {% endfor %}
+        </div>
+        <input type="hidden" name="rating" id="id_rating">
+        {% else %}
+        <p class="review-form-field">{{field}}</p>
+        {% endif %}
+        {% endif %}
+
+
+        {% endfor %}
+
+        <p id="gen-eval" class="text-center">Evaluare generala</p>
+        <div class="submit-btn">
+            <button class="submit-review" type="submit">Trimite</button>
+        </div>
+    </form>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('.rating-star').on('click', function () {
+            var ratingValue = $(this).data('rating');
+            $('#id_rating').val(ratingValue);
+            $('.rating-star').removeClass('checked');
+            $(this).prevAll().addBack().addClass('checked');
+        });
+    });
+</script>
+
+{% endblock content %}

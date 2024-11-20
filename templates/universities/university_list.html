@@ -1,0 +1,56 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/university.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<form class="uni-search-form" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result">
+    {% csrf_token %}
+
+    <input class="form-control uni-search" type="search" name="search" placeholder="Caută universitate..." hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-trigger="keyup changed, search" hx-target="#uni-search-result">
+    <div class="form-filters">
+        <div class="counties-filter-group">
+            <p class="counties-filter-btn" _="on click toggle .active on .counties-filter then toggle .active on .counties-filter-btns"><i class="fa-solid fa-filter"></i> Filtrează</p>
+            <div class="counties-filter">
+                <p class="counties-filter-subheading">Județe</p>
+                {% for county in counties %}
+                <div>
+                    <input class="filter-cb" type="checkbox" autocomplete="off" name="county" value="{{county.id}}">
+                    <label for="county">{{county.name|title}}</label><br>
+                </div>
+                {% endfor %}
+                <p class="counties-filter-subheading">Formă de învățământ</p>
+                <div>
+                    <input class="filter-cb" type="checkbox" autocomplete="off" name="stat" value="stat">
+                    <label for="stat">Stat</label><br>
+                </div>
+                <div>
+                    <input class="filter-cb" type="checkbox" autocomplete="off" name="privat" value="privat">
+                    <label for="privat">Privat</label><br>
+                </div>
+            </div>
+            <div class="counties-filter-btns">
+                <button class="filter-btn" type="submit">Filtrează</button>
+                <a id="filter-reset" href="{% url 'universitati' %}">Resetează</a>
+            </div>
+        </div>
+
+        <select class="sort-unis" name="sort" autocomplete="off" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result">
+
+            <option value="default" selected>Ordonează</option>
+            <option value="sort-descending">Nr. păreri ↑</option>
+            <option value="sort-ascending">Nr. păreri ↓</option>
+
+        </select>
+
+    </div>
+
+</form>
+
+<div id="uni-search-result">
+    {% include 'universities/partials/search_results.html' %}
+</div>
+{% endblock content %}

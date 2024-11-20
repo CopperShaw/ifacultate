@@ -1,0 +1,8 @@
+<div class="university-card-wrapper">
+    <a class="university-card-link" href="{% url 'university' slug_university=university.slug %}">
+        <div class="university-card">
+            <p class="uni-name">{{ university.name }}</p>
+            <p class="no-uni-reviews">{{university.total_reviews}} recenzii</p>
+        </div>
+    </a>
+</div>

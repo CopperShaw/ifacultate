@@ -1,0 +1,33 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="about-heading">
+    <p>Fii <span class="about-span">încrezător</span> când iei decizii importante!</p>
+    <p>Alege facultatea <span class="about-span">potrivită</span> cu iFacultate</p>
+</div>
+<main class="about">
+
+    <img src="{% static 'images/hand.svg' %}">
+    <div class="about-desc">
+        <h2 class="about-subheading text-center"> Misiunea noastră </h2>
+        <p>
+            Salut! Suntem iFacultate, prima platformă de recenzii de facultăți din România. Știm că alegerea facultății este o decizie mare și un pas important pentru viitorul tău și, de aceea, credem ca îți vom fi de ajutor.
+        </p>
+        <br>
+        <p>
+            Ești bombardat cu informații, broșuri și prezentări perfecte, dar nu știi care e adevărata imagine? Credem că decizia ta merită o abordare sinceră și transparentă. De aceea, platforma noastră este construită pe baza recenziilor studenților sau absolvenților. Ei povestesc direct experiența lor, de la cursuri și profesori până la aspectele mai puțin plăcute și chiar oportunitățile de practică. Așa poți să descoperi realitatea dincolo de broșuri și te poți pregăti pentru viața de student.
+        </p>
+        <br>
+        <p>
+            Alege-ți facultatea și construiește-ți viitorul așa cum îți dorești!
+        </p>
+        <br>
+    </div>
+</main>
+{% endblock content %}

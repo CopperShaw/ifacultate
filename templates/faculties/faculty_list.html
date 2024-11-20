@@ -1,0 +1,33 @@
+{% load add_half %}
+
+
+<div class="faculty-cards">
+    {% for faculty in faculties %}
+    <div class="faculty-card">
+        <a class="faculty-card-link" href="{% url 'faculty' slug_university=university.slug slug_faculty=faculty.slug %}">
+            <p class="faculty-card-txt faculty-name">{{faculty.name}}</p>
+
+            <div class="star-rating">
+                <p class="faculty-card-rating">{{faculty.rating}}</p>
+                {% for i in '01234'|make_list %}
+                {% if faculty.rating >= forloop.counter0|add_half and faculty.rating > 0 %}
+                <span class="star highlighted">★</span>
+                {% else %}
+                <span class="star">★</span>
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <p class="faculty-card-txt blue-text">{% if faculty.reviews_number == 1 %} (o recenzie) {% else %} ({{faculty.reviews_number}} recenzii) {% endif %}</p>
+        </a>
+        <div class="fav" hx-post="{% url 'add-to-fav' faculty_id=faculty.pk %}">
+            {% if user in faculty.favorites.all %}
+            <p>❤️ Elimină de la favorite</p>
+            {% else %}
+            <p>♡ Adaugă la favorite</p>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endfor %}
+</div>

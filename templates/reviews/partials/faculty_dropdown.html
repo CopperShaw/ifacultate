@@ -1,0 +1,16 @@
+<p class="shadow">
+    <select name="faculty" required="" id="id_faculty">
+        {% if field.initial %}
+        <option value="{{ field.value }}" selected>
+            {{ field.initial }}
+        </option>
+        {% else %}
+        <option>Alege facultatea</option>
+        {% endif %}
+        {% for faculty in faculties %}
+        <option value="{{ faculty.pk }}">{{ faculty.name }}</option>
+        {% endfor %}
+        </options>
+
+    </select>
+</p>

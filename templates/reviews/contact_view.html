@@ -1,0 +1,49 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/contact.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="contact-container">
+    <h2 class="contact-heading">CONTACTEAZĂ-NE</h2>
+    <p class="contact-subheading">Completează formularul, iar noi îți vom răspunde în cel mai scurt timp.</p>
+
+
+    <form class="contact-form" method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        {% if field.errors %}
+        <ul class="errors">
+            {% for error in field.errors %}
+            <li class="error-message">{{ error }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <p>{{field}}</p>
+        {% endfor %}
+        <button type="submit" class="btn-contact">Trimite</button>
+    </form>
+
+    <div class="contact-details">
+        <p class="contact-detail1">Ne găsești și pe:</p>
+        <p class="contact-detail2">contact@ifacultate.ro</p>
+        <div class="contact-socials">
+            <a class="socials-link" href="https://www.tiktok.com/@ifacultate?_t=8rMw5bhQtyo&_r=1" target="_blank">
+                <img src="{% static 'images/tiktok.png' %}">
+            </a>
+            <a class="socials-link" href="https://www.instagram.com/ifacultate/" target="_blank">
+                <img src="{% static 'images/instagram.png' %}">
+            </a>
+            <a class="socials-link" href="https://www.linkedin.com/company/105470875/" target="_blank">
+                <img src="{% static 'images/linkedin.png' %}">
+            </a>
+            <a class="socials-link" href="https://www.facebook.com/profile.php?id=61568067703912" target="_blank">
+                <img src="{% static 'images/facebook.png' %}">
+            </a>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

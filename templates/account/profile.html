@@ -1,0 +1,42 @@
+{% extends '_base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link href="{% static 'css/profile.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock styles %}
+
+{% block content %}
+
+<div class="profile">
+
+    <div class="profile-top">
+        <p id="profile-email">{{user.email}}</p>
+        <a id="logout-btn" href="{% url 'logout' %}">(logout)</a>
+    </div>
+
+    <div class="profile-grid">
+        <div class="profile-item" hx-get="{% url 'my-reviews' %}" hx-target="#profile-list">Recenziile mele</div>
+        <div class="profile-item" hx-get="{% url 'my-fave-reviews' %}" hx-target="#profile-list">Recenzii favorite</div>
+        <div class="profile-item" hx-get="{% url 'fav-faculties' %}" hx-target="#profile-list">Facultăți favorite</div>
+        <div class="profile-item" hx-get="{% url 'delete-account' pk=user.pk %}" hx-confirm="Ești sigur că vrei să ștergi contul?"> Șterge cont </div>
+    </div>
+
+    <div id="profile-list" class="profile-list">
+
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener('htmx:afterSwap', function (event) {
+        const data = JSON.parse(event.detail.xhr.responseText);
+        if (data.success) {
+            window.location.href = "{% url 'home' %}";
+        }
+    });
+</script>
+
+{% endblock content %}
