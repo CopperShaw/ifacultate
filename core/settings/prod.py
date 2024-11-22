@@ -25,3 +25,16 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
+
+
+# Email setup
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.purelymail.com"
+EMAIL_PORT = "465"
+EMAIL_USE_SSL = "True"
+
+EMAIL_HOST_USER = "noreply@ifacultate.ro"
+EMAIL_HOST_PASSWORD = os.getenv("DJANGO_PURELYMAIL_PASSWORD")
+
+DEFAULT_FROM_EMAIL = "noreply@ifacultate.ro"

@@ -1,0 +1,94 @@
+.contact-form-field {
+    min-width: 100%;
+    margin-bottom: .6rem;
+    padding: .2rem .2rem .2rem .4rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 2px;
+}
+
+.contact-container {
+    text-align: center;
+}
+
+.contact-form {
+    margin-top: 2rem;
+}
+
+.contact-form input {
+    color: var(--text-gray);
+    font-family: 'Nunito', sans-serif;
+}
+
+.contact-form input::placeholder {
+    color: var(--light-gray);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+}
+
+.contact-form textarea {
+    color: var(--text-gray);
+    font-family: 'Nunito', sans-serif;
+    font-size: 15px;
+}
+
+.contact-form textarea::placeholder {
+    color: var(--light-gray)
+}
+
+.btn-contact {
+    width: 100%;
+    height: 2rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text-gray);
+    background-color: var(--primary-yellow);
+    margin-bottom: 2rem;
+}
+
+.contact-details {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-gray);
+}
+
+.contact-detail1 {
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.contact-detail2 {
+    font-size: 14px;
+}
+
+
+.contact-socials {
+    display: flex;
+    gap: .4rem;
+    justify-content: center;
+    margin-top: .8rem;
+    margin-bottom: 3rem;
+}
+
+.contact-heading {
+    margin-top: 3rem;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: var(--primary-color);
+}
+
+.contact-subheading {
+    font-family: 'Nunito';
+    font-size: 15px;
+    line-height: 1.3;
+    color: var(--light-gray);
+    margin-top: .7rem;
+}
+
+
+
+@media screen and (min-width:992px) {
+    .contact-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}

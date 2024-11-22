@@ -1,8 +1,8 @@
-from django.db.models import OuterRef, Subquery, Sum
+from django.db.models import Count, Q
 from django.shortcuts import render
 
-from faculties.models import Faculty
 from universities.models import University
+from reviews.models import Review
 
 
 def universities_search_result(request):
@@ -39,5 +39,5 @@ def universities_search_result(request):
     return render(
         request,
         "universities/partials/search_results.html",
-        {"universities": universities},
+        {"universities": universities.annotate(accepted_review_count=Count('faculties_set__reviews_set', filter=Q(faculties_set__reviews_set__status=Review.StatusChoices.ACCEPTED)))},
     )

@@ -59,6 +59,7 @@
     border-radius: 20px;
     outline: none;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .auth-register {
@@ -131,6 +132,10 @@ input[type="checkbox"]:checked::after {
     width: 24px;
 }
 
+.forgot-pw-subheading {
+    text-align: center;
+}
+
 
 .forgot-pw-heading,
 .forgot-pw-subheading,
@@ -145,12 +150,41 @@ input[type="checkbox"]:checked::after {
     font-size: 24px;
 }
 
+#forgot-btn {
+    font-family: 'Nunito', sans-serif;
+    color: var(--light-gray);
+}
+
 #forgot-pw-btn {
-    font-size: 14px;
-    margin-top: 1rem;
-    margin-bottom: 4rem;
-    border: none;
+    background-color: transparent;
+    color: var(--primary-color);
+    padding: .3rem .8rem;
+    margin: 1rem 0;
+    border: 1.5px var(--primary-yellow) solid;
+    border-radius: 20px;
     outline: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.password-container {
+    height: 60vh;
+}
+
+.pw-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    color: var(--light-gray);
+}
+
+.pw-input input {
+    max-width: 250px;
+    padding: .1rem .5rem;
+    margin: .5rem auto;
+    font-family: 'Nunito', sans-serif;
+    color: var(--text-gray);
+    border: 1.5px solid var(--primary-color);
+    border-radius: 5px;
 }
 
 .forgot-pw-form {
@@ -169,6 +203,8 @@ input[type="checkbox"]:checked::after {
 #id_email {
     border: 1.5px solid var(--primary-color);
     border-radius: 10px;
+    padding: .1rem .5rem;
+    font-family: 'Nunito', sans-serif;
 }
 
 #id_email::placeholder {

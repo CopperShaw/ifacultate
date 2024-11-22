@@ -21,7 +21,6 @@ class Faculty(models.Model):
         "County", on_delete=models.DO_NOTHING, related_name="faculties_set"
     )
     reviews_number = models.IntegerField(default=0)
-    rating = models.DecimalField(decimal_places=1, max_digits=2, null=True, default=0.0)
     favorites = models.ManyToManyField(
         get_user_model(), related_name="favorites", default=None, blank=True
     )
@@ -35,16 +34,16 @@ class Faculty(models.Model):
         return self.name
 
 
-@receiver(post_save, sender=Review)
-def update_reviews_number(sender, instance, created, **kwargs):
-    if created:
-        faculty = instance.faculty
-        faculty.reviews_number += 1
-        faculty.save()
+# @receiver(post_save, sender=Review)
+# def update_reviews_number(sender, instance, created, **kwargs):
+#     if created:
+#         faculty = instance.faculty
+#         faculty.reviews_number += 1
+#         faculty.save()
 
 
-@receiver(pre_delete, sender=Review)
-def update_reviews_number_on_delete(sender, instance, **kwargs):
-    faculty = instance.faculty
-    faculty.reviews_number -= 1
-    faculty.save()
+# @receiver(pre_delete, sender=Review)
+# def update_reviews_number_on_delete(sender, instance, **kwargs):
+#     faculty = instance.faculty
+#     faculty.reviews_number -= 1
+#     faculty.save()

@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from reviews.models import Review
 
 
+
 class University(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=128, db_index=True)
@@ -38,16 +39,16 @@ class University(models.Model):
     #     )
 
 
-@receiver(post_save, sender=Review)
-def update_reviews_number(sender, instance, created, **kwargs):
-    if created:
-        university = instance.faculty.university
-        university.total_reviews += 1
-        university.save()
+# @receiver(post_save, sender=Review)
+# def update_reviews_number(sender, instance, created, **kwargs):
+#     if created:
+#         university = instance.faculty.university
+#         university.total_reviews += 1
+#         university.save()
 
 
-@receiver(pre_delete, sender=Review)
-def update_reviews_number_on_delete(sender, instance, **kwargs):
-    university = instance.faculty.university
-    university.total_reviews -= 1
-    university.save()
+# @receiver(pre_delete, sender=Review)
+# def update_reviews_number_on_delete(sender, instance, **kwargs):
+#     university = instance.faculty.university
+#     university.total_reviews -= 1
+#     university.save()

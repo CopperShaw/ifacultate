@@ -48,6 +48,11 @@
     align-items: center;
 }
 
+.review-add-tof {
+    font-family: 'Nunito', sans-serif;
+    color: var(--light-gray);
+}
+
 #id_university,
 #id_faculty,
 #id_user_type {

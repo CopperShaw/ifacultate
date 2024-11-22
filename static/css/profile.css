@@ -36,6 +36,7 @@
     background-color: #d9d9d948;
     color: var(--medium-gray);
     font-family: 'Nunito', sans-serif;
+    cursor: pointer;
 }
 
 .fav-title {

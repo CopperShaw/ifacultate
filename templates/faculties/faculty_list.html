@@ -18,7 +18,7 @@
                 {% endfor %}
             </div>
 
-            <p class="faculty-card-txt blue-text">{% if faculty.reviews_number == 1 %} (o recenzie) {% else %} ({{faculty.reviews_number}} recenzii) {% endif %}</p>
+            <p class="faculty-card-txt blue-text">{% if faculty.accepted_review_count == 1 %} (o recenzie) {% else %} ({{faculty.accepted_review_count}} recenzii) {% endif %}</p>
         </a>
         <div class="fav" hx-post="{% url 'add-to-fav' faculty_id=faculty.pk %}">
             {% if user in faculty.favorites.all %}

@@ -1,0 +1,18 @@
+main {
+    padding: 4.8rem 0;
+}
+
+.politica-main p {
+    font-size: 14px;
+    color: var(--light-gray);
+}
+
+ul,
+li {
+    color: var(--light-gray);
+}
+
+.politica-main p.subhead {
+    font-size: 15px;
+    font-weight: bold;
+}

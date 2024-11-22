@@ -45,9 +45,9 @@
     {% else %}
     <div class="text-center" hx-post="{% url 'add-review-to-fav' review_id=review.pk %}">
         {% if review in user.favorite_reviews.all %}
-        <p>❤️ Elimină de la favorite</p>
+        <p class="review-add-tof">❤️ Elimină de la favorite</p>
         {% else %}
-        <p>♡ Adaugă la favorite</p>
+        <p class="review-add-tof">♡ Adaugă la favorite</p>
         {% endif %}
     </div>
 
