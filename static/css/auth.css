@@ -150,6 +150,11 @@ input[type="checkbox"]:checked::after {
     font-size: 24px;
 }
 
+.text-or {
+    font-family: 'Nunito', sans-serif;
+    color: var(--light-gray);
+}
+
 #forgot-btn {
     font-family: 'Nunito', sans-serif;
     color: var(--light-gray);
