@@ -1,9 +1,10 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from reviews.forms import ReviewForm
 from universities.models import University
 
-
+@login_required(login_url='auth')
 def add_review(request, slug_university=None, slug_faculty=None):
     form = ReviewForm(slug_university=slug_university, slug_faculty=slug_faculty)
     if request.method == "POST":
