@@ -32,8 +32,8 @@ class ReviewForm(forms.ModelForm):
             "pro": forms.Textarea(
                 attrs={
                     "placeholder": "Enumeră câteva aspecte pozitive (min. 50 caractere)",
-                    "class": "textarea-field",
-                }
+                    "class": "textarea-field",          
+                    }
             ),
             "against": forms.Textarea(
                 attrs={
