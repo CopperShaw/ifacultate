@@ -11,6 +11,7 @@ from .my_reviews import my_favorite_reviews_view, my_reviews_view
 from .review_crud import add_review
 from .search_results import search_results_view
 from .t_and_c import TermsView
+from .review_detail import ReviewDetailView
 
 __all__ = [
     home_view,
@@ -30,4 +31,5 @@ __all__ = [
     future_students_partial,
     graduates_partial,
     FAQView,
+    ReviewDetailView,
 ]

@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (AboutView, ContactSent, ContactView, CookiesView, DateView,
-                    FAQView, TermsView, add_review, add_review_to_fav,
+                    FAQView, TermsView, ReviewDetailView, add_review, add_review_to_fav,
                     faculties_dropdown, future_students_partial, get_reviews,
                     graduates_partial, home_view, my_favorite_reviews_view,
                     my_reviews_view, search_results_view)
@@ -37,4 +37,5 @@ urlpatterns = [
     path("future-students/", future_students_partial, name="future-students"),
     path("graduates/", graduates_partial, name="graduates"),
     path("reviews/<uuid:faculty_id>", get_reviews, name="get-reviews"),
+    path('reviews/<uuid:pk>/', ReviewDetailView.as_view(), name='review_detail'),
 ]

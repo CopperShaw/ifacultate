@@ -53,6 +53,11 @@
     color: var(--light-gray);
 }
 
+.review-detail {
+    height: 100vh;
+    margin-top: 4rem;
+}
+
 #id_university,
 #id_faculty,
 #id_user_type {

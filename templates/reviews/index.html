@@ -194,7 +194,9 @@
         {% include 'reviews/partials/recent_reviews.html' %}
         <div class="on-desktop desktop-recent-reviews">
             {% for review in recent_reviews %}
+           
             <div class="review">
+                <a href="{% url 'review_detail' review.pk %}" >
                 <p class="review-title-recent text-center">{{ review.title|slice:":20" }}</p>
                 <p class="review-card-fac text-center">{{ review.faculty.name }}</p>
                 <p class="review-card-uni text-center">{{ review.university.name }}</p>
@@ -231,6 +233,7 @@
                         <p class="review-education text-center">{{ review.get_user_type_display }}</p>
                     </div>
                 </div>
+            </a>
             </div>
             {% endfor %}
         </div>

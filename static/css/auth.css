@@ -125,6 +125,7 @@ input[type="checkbox"]:checked::after {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
     color: var(--light-gray);
+    cursor: pointer;
 }
 
 .ggl-svg {

@@ -1,0 +1,14 @@
+{% extends "_base.html" %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/faculty.css' %}">
+<link rel="stylesheet" href="{% static 'css/university.css' %}">
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock styles %}
+
+{% block content %}
+<div class="review-detail">
+{% include 'reviews/partials/review_card.html' %}
+</div>
+{% endblock content %}
