@@ -28,7 +28,7 @@ class ReviewForm(forms.ModelForm):
             "grad_promo": forms.TextInput(
                 attrs={"placeholder": "Promoția (ex. 2020-2024)"}
             ),
-            "user_type": forms.Select(attrs={"placeholder": "Select user type"}),
+            "user_type": forms.Select(attrs={"placeholder": "Alege",}),
             "pro": forms.Textarea(
                 attrs={
                     "placeholder": "Enumeră câteva aspecte pozitive (min. 50 caractere)",
@@ -62,6 +62,9 @@ class ReviewForm(forms.ModelForm):
         }
         self.fields["grad_promo"].error_messages = {
             "required": "Vă rugăm să introduceți promoția.",
+        }
+        self.fields["user_type"].error_messages = {
+            "required": "Vă rugăm selectați dacă în prezent sunteți student sau absolvent.",
         }
         self.fields["pro"].error_messages = {
             "required": "Vă rugăm să enumerați câteva aspecte pozitive.",

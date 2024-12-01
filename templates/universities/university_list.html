@@ -7,8 +7,7 @@
 {% endblock styles %}
 
 {% block content %}
-<form class="uni-search-form" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result">
-    {% csrf_token %}
+<form id="uni-search-id" class="uni-search-form" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result" >
 
     <input class="form-control uni-search" type="search" name="search" placeholder="Caută universitate..." hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-trigger="keyup changed, search" hx-target="#uni-search-result">
     <div class="form-filters">
@@ -17,7 +16,7 @@
             <div class="counties-filter">
                 <p class="counties-filter-subheading">Județe</p>
                 {% for county in counties %}
-                <div>
+                <div id="counties">
                     <input class="filter-cb" type="checkbox" autocomplete="off" name="county" value="{{county.id}}">
                     <label for="county">{{county.name|title}}</label><br>
                 </div>
@@ -33,12 +32,12 @@
                 </div>
             </div>
             <div class="counties-filter-btns">
-                <button class="filter-btn" type="submit">Filtrează</button>
+                <button class="filter-btn" type="submit" _="on click toggle .active on .counties-filter then toggle .active on .counties-filter-btns">Filtrează</button>
                 <a id="filter-reset" href="{% url 'universitati' %}">Resetează</a>
             </div>
         </div>
 
-        <select class="sort-unis" name="sort" autocomplete="off" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result">
+        <select class="sort-unis" name="sort" autocomplete="off" hx-get="{% url 'search-uni' %}" hx-swap="innerHTML" hx-target="#uni-search-result" hx-include="#uni-search-id">
 
             <option value="default" selected>Ordonează</option>
             <option value="sort-descending">Nr. păreri ↑</option>
@@ -53,4 +52,5 @@
 <div id="uni-search-result">
     {% include 'universities/partials/search_results.html' %}
 </div>
+
 {% endblock content %}

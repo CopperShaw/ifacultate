@@ -54,8 +54,15 @@
 }
 
 .review-detail {
-    height: 100vh;
     margin-top: 4rem;
+    margin-bottom: 8rem;
+}
+
+.alert-danger {
+    color: red;
+    font-weight: bold;
+    font-size: large;
+    font-family: 'Nunito', sans-serif;
 }
 
 #id_university,
@@ -135,10 +142,20 @@
 
 }
 
-
 .review-field {
     font-family: 'Nunito', sans-serif;
     color: var(--text-gray);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    display: inline-block;
+    vertical-align: top;
+    overflow-x: auto;
+    padding: 5px;
+}
+
+.review-field span {
+    word-break: break-word;
 }
 
 .review-date {

@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django.shortcuts import render
 from django.utils.html import format_html
-
+from unidecode import unidecode
 from faculties.models import Faculty
 
 
@@ -11,7 +11,7 @@ def search_results_view(request):
     all_faculties = Faculty.objects.all()
     if query:
         faculties = all_faculties.filter(
-            Q(name__icontains=query) | Q(slug__icontains=query)
+            Q(name__icontains=query) | Q(slug__icontains=unidecode(query))
         )
         highlighted_faculties = [
             {

@@ -1,3 +1,5 @@
+import json
+
 from django.db.models import Count, Q
 from django.shortcuts import render
 
@@ -12,7 +14,7 @@ def universities_search_result(request):
     stat = request.GET.get("stat", "")
     privat = request.GET.get("privat", "")
 
-    universities = University.objects.all()
+    universities = University.objects.all().annotate(accepted_review_count=Count('faculties_set__reviews_set', filter=Q(faculties_set__reviews_set__status=Review.StatusChoices.ACCEPTED)))
 
     if query:
         universities = universities.filter(name__icontains=query)
@@ -29,9 +31,9 @@ def universities_search_result(request):
 
     if sort:
         if sort == "sort-ascending":
-            universities = universities.order_by("-total_reviews")
+            universities = universities.order_by("-accepted_review_count")
         else:
-            universities = universities.order_by("total_reviews")
+            universities = universities.order_by("accepted_review_count")
 
     if not (county or query):
         universities = universities
@@ -39,5 +41,5 @@ def universities_search_result(request):
     return render(
         request,
         "universities/partials/search_results.html",
-        {"universities": universities.annotate(accepted_review_count=Count('faculties_set__reviews_set', filter=Q(faculties_set__reviews_set__status=Review.StatusChoices.ACCEPTED)))},
+        {"universities": universities},
     )

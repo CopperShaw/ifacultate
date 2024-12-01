@@ -15,4 +15,5 @@ class FacultyDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         faculty = kwargs.get("object")
         context["reviews"] = Review.accepted.filter(faculty=faculty)
+        context['reviews_count'] = Review.accepted.filter(faculty=faculty).count()
         return context

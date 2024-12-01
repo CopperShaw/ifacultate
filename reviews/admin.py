@@ -1,14 +1,15 @@
 from django.contrib import admin
-
+from django.db import models
+from django import forms
 from reviews.models import Contact, Review
-from reviews.forms import ReviewForm
 
-# Register your models here.
-
+class CustomAdmin(admin.ModelAdmin):
+    formfield_overrides = {
+        models.CharField: {'widget': forms.Textarea(attrs={'rows':4, 'cols':40})},
+    }
 
 @admin.register(Review)
-class ReviewModelAdmin(admin.ModelAdmin):
-    form = ReviewForm
+class ReviewModelAdmin(CustomAdmin):
     list_display = (
         "title",
         "faculty",

@@ -12,7 +12,7 @@
 <div class="faculty-detail-header">
     <p class="blue-name">{{faculty.name}}</p>
     <p class="faculty-detail-txt">{{faculty.university.name}}</p>
-    <p class="faculty-detail-txt">{% if faculty.reviews_number == 1 %} (o recenzie) {% else %} ({{faculty.reviews_number}} recenzii) {% endif %}</p>
+    <p class="faculty-detail-txt">{% if reviews_count == 1 %} (o recenzie) {% else %} ({{reviews_count}} recenzii) {% endif %}</p>
 </div>
 
 <br>

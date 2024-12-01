@@ -23,7 +23,7 @@ class RecentManager(models.Manager):
     """
 
     def get_queryset(self) -> QuerySet:
-        return super().get_queryset().order_by("-created_at")[:3]
+        return super().get_queryset().filter(status=Review.StatusChoices.ACCEPTED).order_by("-created_at")[:3]
 
 
 class Review(models.Model):
@@ -64,7 +64,7 @@ class Review(models.Model):
     user_type = models.CharField(
         max_length=2,
         choices=UserTypeChoices.choices,
-        blank=True,
+
     )
     title = models.CharField(max_length=255, validators=[MinLengthValidator(10)])
     pro = models.CharField(max_length=5555, validators=[MinLengthValidator(50)])
@@ -87,6 +87,7 @@ class Review(models.Model):
     recent = RecentManager()
 
     class Meta:
+        unique_together = ('user', 'faculty')
         verbose_name = "Părere"
         verbose_name_plural = "Păreri"
         ordering = ["-publish"]
